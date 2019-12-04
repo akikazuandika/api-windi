@@ -1,0 +1,37 @@
+{
+  "name": "windi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "presets": [
+    "env"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && babel src -d dist",
+    "start": "npm run build && pm2 start dist/index.js --name='windi' ",
+    "update": "npm run build && pm2 restart windi",
+    "dev": "nodemon src/index.js --exec babel-node --presets @babel/preset-env",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Caca Wilda Andika",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/runtime": "^7.7.2",
+    "bcrypt": "^3.0.6",
+    "bluebird": "^3.7.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "mysql2": "^2.0.0",
+    "sequelize": "^5.21.2"
+  }
+}
