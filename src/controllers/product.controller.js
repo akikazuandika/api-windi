@@ -27,7 +27,7 @@ export default {
         })
     },
     create : async(req, res) => {
-        if(!req.body.title || !req.body.description || !req.body.city || !req.body.province){
+        if(!req.body.title || !req.body.description || !req.body.city || !req.body.province || !req.body.photo){
             return res.status(400).json({
                 success : false,
                 message : "Invalid data"
@@ -38,7 +38,8 @@ export default {
             title : req.body.title,
             description : req.body.description,
             city : req.body.city,
-            province : req.body.province
+            province : req.body.province,
+            photo : req.body.photo
         }
 
         let product = await ProductModel.create(data)
@@ -55,6 +56,7 @@ export default {
         if (req.body.description) updateData.description = req.body.description
         if (req.body.city) updateData.city = req.body.city
         if (req.body.province) updateData.province = req.body.province
+        if (req.body.photo) updateData.photo = req.body.photo
 
         if (updateData.length) return res.status(400).json({ success : false, message : "Data can't empthy" })
         updateData.updatedAt = Date.now()
